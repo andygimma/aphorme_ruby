@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<!--
+	Strongly Typed 1.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Aphorme</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		  <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no" name="viewport" />
+
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Arvo:700" rel="stylesheet" type="text/css" />
+
+		<script src="../assets/jquery-1.9.1.min.js"></script>
+		<script src="../assets/jquery.dropotron-1.3.js"></script>
+		<script src="../assets/config.js"></script>
+		<script src="../assets/skel.min.js"></script>
+		<script src="../assets/skel-ui.min.js"></script>
+		<%= csrf_meta_tags %>
+		<noscript>
+			<link rel="stylesheet" href="//css/skel-noscript.css" />
+			<link rel="stylesheet" href="//css/style.css" />
+			<link rel="stylesheet" href="//css/style-desktop.css" />
+		</noscript>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+	</head>
+<body class="homepage">
+
+		<!-- Header Wrapper -->
+			<div id="header-wrapper">
+
+						
+				<!-- Header -->
+					<div id="header" class="container">
+
+						<!-- Logo -->
+						
+							<h1 id="logo"><a href="#">Aphorme</a></h1>
+<!-- 							<p>A responsive HTML5 site template. Manufactured by HTML5 UP.</p> -->
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li><a class="icon icon-home" href="/"><span>Home</span></a></li>
+									<li><a href="/about" class="icon icon-bar-chart"><span>About</span></a></li>
+									<li><a class="icon icon-cog" href="/contact"><span>Contact</span></a></li>
+									<li><a class="icon icon-retweet" href="/guide"><span>Guide</span></a></li>
+									<li>
+										<a href="" class="icon icon-bar-chart"><span>Search</span></a>
+										<ul>
+											<li><a href="/search">Keyword Search</a></li>
+											<li><a href="/alphabetical">Alphabetical Search</a></li>
+										
+											
+										</ul>
+									</li>
+									<%= raw user_nav %>
+								</ul>
+							</nav>
+							
+
+					</div>
+
+			</div>
+			
+		<!-- Features Wrapper -->
+			<div id="features-wrapper">
+			
+
+				<!-- Features -->
+					<section id="features" class="container">
+					<%= yield %>
+						
+					</section>
+			
+			</div>
+		
+		
+
+
+				<!-- Copyright -->
+					<div id="copyright" class="container">
+						<ul class="links">
+<!-- 							<li>&copy; Untitled. All rights reserved</li> -->
+							<li>Demo images: <a href="http://regularjane.deviantart.com/">regularjane</a></li>
+							<li>Design: <a href="http://html5up.net/">HTML5 UP</a></li>
+						</ul>
+					</div>
+
+			</div>
+
+	</body>
+</html>

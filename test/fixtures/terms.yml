@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  term: MyString
+  bit: MyString
+  byte: MyText
+  batch: MyText
+  origin: MyString
+  user_id: 1
+  version_number: MyString
+  previous_version_number: MyString
+
+two:
+  term: MyString
+  bit: MyString
+  byte: MyText
+  batch: MyText
+  origin: MyString
+  user_id: 1
+  version_number: MyString
+  previous_version_number: MyString
