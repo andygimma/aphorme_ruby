@@ -19,6 +19,11 @@ class TermsController < ApplicationController
     @user = User.find(session[:user_id])
     @term = @user.terms.build(term: term, origin: origin, bit: bit, byte: byte, batch: batch, previous_version_number: nil, version_number: version_number)
     @term.save
+    
+    ip_address = request.remote_ip
+    @term_info = @term.term_infos.build(ip_address: ip_address, user_id: session[:user_id])
+    @term_info.save
+    
     redirect_to '/terms/index'
   end
 
@@ -70,6 +75,5 @@ class TermsController < ApplicationController
     term_id = params[:term_id]
     @term = Term.find(term_id)
     @versions = @term.versions
-    @ip = request.remote_ip
   end
 end
