@@ -22,6 +22,8 @@ Aphorme1::Application.routes.draw do
   match '/edit_term/:term_id', to: 'terms#new_version_form'
   match '/update_term', to: 'terms#new_version'
   match '/search_terms/:search_term', to: 'terms#search'
+  match '/search_term', to: 'terms#search_term'
+
 
   match '/versions/:term_id', to: 'terms#versions'
 
