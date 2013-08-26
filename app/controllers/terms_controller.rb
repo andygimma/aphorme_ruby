@@ -73,11 +73,16 @@ class TermsController < ApplicationController
   end
 
   def search
+    search_term = params[:search_term]
+    @terms = Term.where(term: search_term)
   end
   
   def versions
     term_id = params[:term_id]
     @term = Term.find(term_id)
     @versions = @term.versions
+  end
+  
+  def search_ui
   end
 end

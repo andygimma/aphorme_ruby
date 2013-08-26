@@ -17,10 +17,12 @@ Aphorme1::Application.routes.draw do
   match '/terms/new', to: 'terms#new'
   match '/terms/create', to: 'terms#create'
   match '/terms/index', to: 'terms#index'
+  match '/terms/search', to: 'terms#search_ui'
   match '/terms/:term_id', to: 'terms#read'
   match '/edit_term/:term_id', to: 'terms#new_version_form'
   match '/update_term', to: 'terms#new_version'
   match '/search_terms/:search_term', to: 'terms#search'
+
   match '/versions/:term_id', to: 'terms#versions'
 
 

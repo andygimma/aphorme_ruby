@@ -3,9 +3,7 @@ module ApplicationHelper
     nav = '	 <li>
 										<a href="" class="icon icon-bar-chart"><span>User</span></a>
 										<ul>
-											<li><a href="/add">Add</a></li>
-											<li><a href="/view">View Example</a></li>
-											<li><a href="#">Settings</a></li>
+											<li><a href="/terms/new">Add</a></li>
 											<li><a href="/logout">Logout</a></li>
 											
 										</ul>
