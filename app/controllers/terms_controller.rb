@@ -56,6 +56,10 @@ class TermsController < ApplicationController
     @term = Term.find(term_id)
     @term.update_attributes(submission_hash)
     @term.save
+    
+    ip_address = request.remote_ip
+    @term_info = @term.term_infos.build(ip_address: ip_address, user_id: session[:user_id])
+    @term_info.save
     redirect_to '/terms/index'
   end
 
