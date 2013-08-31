@@ -91,4 +91,29 @@ class TermsController < ApplicationController
   
   def search_ui
   end
+  
+  def save_search_info
+    term_id = params[:term_id]
+    @term = Term.find(term_id)
+    ip_address = request.remote_ip
+    @search_info = @term.search_infos.build(ip_address: ip_address, user_id: session[:user_id])
+    @search_info.save
+    redirect_to '/terms/' + term_id.to_s
+  end
+  
+  def term_map
+  end
+  
+  def term_map_api
+    @term_infos = TermInfo.all()
+    render json: @term_infos
+  end
+  
+  def search_map
+  end
+  
+  def search_map_api
+    @search_infos = SearchInfo.all()
+    render json: @search_infos
+  end
 end

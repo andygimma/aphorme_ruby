@@ -23,8 +23,14 @@ Aphorme1::Application.routes.draw do
   match '/update_term', to: 'terms#new_version'
   match '/search_terms/:search_term', to: 'terms#search'
   match '/search_term', to: 'terms#search_term'
+  match '/save_search_info/:term_id', to: 'terms#save_search_info'
+  
+  match '/term_map', to: 'terms#term_map'
+  match '/term_map_api', to: 'terms#term_map_api'
 
-
+  match '/search_map', to: 'terms#search_map'
+  match '/search_map_api', to: 'terms#search_map_api'
+  
   match '/versions/:term_id', to: 'terms#versions'
 
 

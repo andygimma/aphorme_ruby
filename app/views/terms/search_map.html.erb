@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+<![endif]-->
+
+<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+
+<!--[if lte IE 8]><link rel="stylesheet" href="../dist/MarkerCluster.Default.ie.css" /><![endif]-->
+<script src="/assets/leaflet.markercluster-src.js"></script>
+<link rel="stylesheet" href="../assets/MarkerCluster.css" />
+<link rel="stylesheet" href="../assets/MarkerCluster.Default.css" />
+<style type="text/css">
+  #map {height:500px;}
+</style>
+
+
+
+<div id="map"></div>
+
+<h1>Terms#search_map</h1>
+<p>Find me in app/views/term/search_map.html.erb</p>
+
+
+<script>
+var map = L.map('map').setView([51.505, -0.09], 13);
+var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+var osmAttrib='Map data © OpenStreetMap contributors';
+var osm = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 12, attribution: osmAttrib});		
+
+// start the map in South-East England
+map.setView(new L.LatLng(51.3, 0.7),2);
+map.addLayer(osm);
+var markers = L.markerClusterGroup();
+
+$.getJSON('search_map_api', function(data) {  
+  for (var i = 0; i < data.length; i++) {
+    var marker = L.marker([data[i].latitude, data[i].longitude]);
+    markers.addLayer(marker);
+  }
+
+map.addLayer(markers); 
+});
+</script>
