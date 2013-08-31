@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  term_id: 1
+  related_term_id: 1
+  name: MyString
+
+two:
+  term_id: 1
+  related_term_id: 1
+  name: MyString

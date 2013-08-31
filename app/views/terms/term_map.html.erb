@@ -34,7 +34,7 @@ var markers = L.markerClusterGroup();
 
 $.getJSON('term_map_api', function(data) {  
   for (var i = 0; i < data.length; i++) {
-    var marker = L.marker([data[i].latitude, data[i].longitude]);
+    var marker = L.marker([data[i].latitude, data[i].longitude]).bindPopup('<a href="/terms/'+data[i].term_id+'">'+data[i].name+'</a>');
     markers.addLayer(marker);
   }
 

@@ -3,6 +3,10 @@
 <a href="/versions/<%=@term.id%>">See Previous Versions</a>
 
 <p><%= @term.term %></p>
+<p>Related Terms</p>
+    <% @term.related_terms.each do |term| -%>
+      <a href="/terms/<%=term.related_term_id%>"> <%= term.name %></a>
+    <% end -%>
 <p><%= @term.origin %></p>
 <p><%= @term.bit %></p>
 <p><%= @term.byte %></p>

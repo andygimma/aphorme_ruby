@@ -28,13 +28,14 @@ var osmAttrib='Map data © OpenStreetMap contributors';
 var osm = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 12, attribution: osmAttrib});		
 
 // start the map in South-East England
-map.setView(new L.LatLng(51.3, 0.7),2);
+map.setView(new L.LatLng(22.0, 0.0),2);
 map.addLayer(osm);
 var markers = L.markerClusterGroup();
 
 $.getJSON('search_map_api', function(data) {  
   for (var i = 0; i < data.length; i++) {
-    var marker = L.marker([data[i].latitude, data[i].longitude]);
+    var marker = L.marker([data[i].latitude, data[i].longitude]).bindPopup('<a href="/terms/'+data[i].term_id+'">'+data[i].name+'</a>');
+  
     markers.addLayer(marker);
   }
 

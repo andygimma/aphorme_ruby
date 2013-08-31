@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130831074622) do
+ActiveRecord::Schema.define(:version => 20130831201152) do
+
+  create_table "related_terms", :force => true do |t|
+    t.integer  "term_id"
+    t.integer  "related_term_id"
+    t.string   "name"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "search_infos", :force => true do |t|
     t.integer  "user_id"
@@ -22,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20130831074622) do
     t.integer  "term_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "name"
   end
 
   create_table "term_infos", :force => true do |t|
@@ -33,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130831074622) do
     t.integer  "term_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "name"
   end
 
   create_table "terms", :force => true do |t|

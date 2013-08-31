@@ -5,5 +5,6 @@ class Term < ActiveRecord::Base
   belongs_to :user
   has_many :term_infos
   has_many :search_infos
+  has_many :related_terms
 
 end

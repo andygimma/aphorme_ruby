@@ -1,40 +1,50 @@
-	<form method="post" action="/update_term">
-										<div class="row">
-											<div class="6u">
-												<input name="term" placeholder="Term" type="text" class="text" value="<%=@term.term%>" />
-											</div>
-											<div class="6u">
-												<input name="origin" placeholder="Origin" type="text" class="text" value="<%=@term.origin%>"/>
-											</div>
-										</div>
-										
-										<div class="row">
-											<div class="12u">
-												<input name="related_terms" placeholder="Related Terms" type="text" class="text" />
-											</div>
-										</div>
-										
-										<div class="row">
-											<div class="12u">
-												<textarea name="bit" placeholder="Bit"><%=@term.bit%></textarea>
-											</div>
-										</div>
-										<div class="row">
-											<div class="12u">
-												<textarea name="byte" placeholder="Byte"><%=@term.byte%></textarea>
-											</div>
-										</div>
-										<div class="row">
-											<div class="12u">
-												<textarea name="batch" placeholder="Batch"><%=@term.batch%></textarea>
-											</div>
-										</div>
-										<input type="hidden" name="term_id" id="term_id" value="<%=@term.id%>">
-										
-										<div class="row">
-											<div class="12u">
-												<!--<a href="#" onclick="document.forms[0].submit();return false;" class="button button-icon icon icon-envelope">Add This Term To Aphorme</a>-->
-												<button class="submit">Submit</button>
-											</div>
-										</div>
-									</form>
+<script type="text/javascript" src="../assets/jquery.tokeninput.js"></script>
+<link rel="stylesheet" type="text/css" href="../assets/token-input.css" />
+<h2><%=@term.term%></h2>
+
+<form method="post" action="/update_term">
+    <div class="row">
+	    <div class="12u">
+		    <input name="origin" placeholder="Origin" type="text" class="text" value="<%=@term.origin%>"/>
+	    </div>
+    </div>
+
+    <% @term.related_terms.each do |term| -%>
+      <a href="/terms/<%=term.related_term_id%>"> <%= term.name %></a>
+    <% end -%>
+    <div class="row">
+	    <div class="12u">
+		    <input id="related_terms" name="related_terms" placeholder="Related Terms" type="text" class="text" />
+	    </div>
+    </div>
+    
+    <div class="row">
+	    <div class="12u">
+		    <textarea name="bit" placeholder="Bit"><%=@term.bit%></textarea>
+	    </div>
+    </div>
+    <div class="row">
+	    <div class="12u">
+		    <textarea name="byte" placeholder="Byte"><%=@term.byte%></textarea>
+	    </div>
+    </div>
+    <div class="row">
+	    <div class="12u">
+		    <textarea name="batch" placeholder="Batch"><%=@term.batch%></textarea>
+	    </div>
+    </div>
+    <input type="hidden" name="term_id" id="term_id" value="<%=@term.id%>">
+    
+    <div class="row">
+	    <div class="12u">
+		    <!--<a href="#" onclick="document.forms[0].submit();return false;" class="button button-icon icon icon-envelope">Add This Term To Aphorme</a>-->
+		    <button class="submit">Submit</button>
+	    </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $("#related_terms").tokenInput("/term_autocomplete_api");
+});
+</script>
