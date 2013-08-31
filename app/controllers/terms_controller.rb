@@ -1,3 +1,9 @@
+#
+# Developer : Andy Gimma (andy.n.gimma@gmail.com)
+# Date : 08/14/13
+# All code (c)2013 Andy Gimma all rights reserved
+#
+
 require 'digest/sha1'
 
 class TermsController < ApplicationController
@@ -9,6 +15,10 @@ class TermsController < ApplicationController
     term = params[:term]
     origin = params[:origin]
     related_terms = params[:related_terms]
+    terms_array = related_terms.split ","
+    #terms_array.each do |term|
+      # Created related term
+    
     #####
     # Not saving related_terms for now. Will save them to a has_many relationship
     #####
@@ -17,7 +27,7 @@ class TermsController < ApplicationController
     batch = params[:batch]
     version_number = Digest::SHA1.hexdigest Time.new.to_s
     @user = User.find(session[:user_id])
-    @term = @user.terms.build(term: term, origin: origin, bit: bit, byte: byte, batch: batch, previous_version_number: nil, version_number: version_number)
+    @term = @user.terms.build(related_terms: related_terms, name: term, term: term, origin: origin, bit: bit, byte: byte, batch: batch, previous_version_number: nil, version_number: version_number)
     @term.save
     
     ip_address = request.remote_ip
@@ -115,5 +125,10 @@ class TermsController < ApplicationController
   def search_map_api
     @search_infos = SearchInfo.all()
     render json: @search_infos
+  end
+  
+  def term_autocomplete_api
+    @terms = Term.select("name, id")
+    render json: @terms
   end
 end

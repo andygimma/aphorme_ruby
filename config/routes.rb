@@ -1,3 +1,9 @@
+#
+# Developer : Andy Gimma (andy.n.gimma@gmail.com)
+# Date : 08/14/13
+# All code (c)2013 Andy Gimma all rights reserved
+#
+
 Aphorme1::Application.routes.draw do
   match '/', to: 'static_pages#home'
   match '/about', to: 'static_pages#about'
@@ -30,6 +36,8 @@ Aphorme1::Application.routes.draw do
 
   match '/search_map', to: 'terms#search_map'
   match '/search_map_api', to: 'terms#search_map_api'
+  
+  match '/term_autocomplete_api', to: 'terms#term_autocomplete_api'
   
   match '/versions/:term_id', to: 'terms#versions'
 
