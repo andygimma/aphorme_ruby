@@ -28,6 +28,19 @@ class SessionsController < ApplicationController
   def forgot_password
   end
   
+  def signin
+    email = params[:email]
+    password = params[:password]
+    @user = User.where("email = ? AND password = ?", email, password).first
+    if @user.blank?
+      redirect_to '/signin'
+    else
+      session[:user_email] = @user.email  
+      session[:user_id] = @user.id
+      redirect_to '/'
+    end
+  end
+  
   def create_without_omniauth
     email = params[:email]
     password = params[:password]
@@ -37,11 +50,11 @@ class SessionsController < ApplicationController
       user.save
       session[:user_email] = user.email  
       session[:user_id] = user.id
-      redirect_to '/'
+      redirect_to '/signin'
     else
       session[:user_email] = @user.email  
       session[:user_id] = @user.id
-      redirect_to '/about'
+      redirect_to '/'
     end
   end
   

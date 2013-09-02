@@ -1,2 +1,61 @@
-<h1>StaticPages#signup</h1>
-<p>Find me in app/views/static_pages/signup.html.erb</p>
+<script>
+function isValidEmailAddress(emailAddress) {
+  var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
+  // alert( pattern.test(emailAddress) );
+  return pattern.test(emailAddress);
+};
+function checkAndSubmit() {
+  var submit_boolean = true;
+  var values = $('#email').val();
+  if (!isValidEmailAddress(values)) {
+      $('#email_error').text("Not a valid email");
+      submit_boolean = false;
+  } 
+  var password = $('#password').val();
+  var confirm_password = $('#confirm_password').val();
+  if (password != confirm_password) {
+    $('#passwords_match_error').text("Passwords don't match");
+    submit_boolean = false;
+  }
+  
+  if (submit_boolean == true) {
+    document.forms[0].submit();return false;
+  }
+}
+</script>
+
+<h1>Sign in</h1>
+
+<span id="email_error"></span>	
+<br>
+<span id="passwords_match_error"></span>
+
+<form id="signin_form" method="post" action="/user/create">
+
+<div class="row">
+	<div class="12u">
+		<input id="email" name="email" placeholder="Email" type="text" class="text" />
+	</div>
+</div>
+<div class="row">
+	<div class="12u">
+		<input id="password" name="password" placeholder="Password" type="text" class="text" />
+	</div>
+</div>
+<div class="row">
+	<div class="12u">
+		<input id="confirm_password" name="confirm_password" placeholder="Confirm Password" type="text" class="text" />
+	</div>
+</div>
+
+
+
+
+<div class="row">
+	<a href="#" onclick="checkAndSubmit()" class="button button-icon icon icon-file">Submit</a>
+<!-- 	Set onclick -->
+
+
+</div>
+
+</form>

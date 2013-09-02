@@ -17,6 +17,8 @@ Aphorme1::Application.routes.draw do
   match '/session/destroy/:id', to: 'sessions#destroy'
   match '/signin', to: 'sessions#new'
   match '/user/create', to: 'sessions#create_without_omniauth'
+  match '/user/signin', to: 'sessions#signin'
+
   match '/forgot_password', to: 'sessions#forgot_password'
   match '/logout', to: 'sessions#logout'
   
