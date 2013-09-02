@@ -1,5 +1,31 @@
 <script type="text/javascript" src="../assets/jquery.tokeninput.js"></script>
 <link rel="stylesheet" type="text/css" href="../assets/token-input.css" />
+
+<script>
+function checkAndSubmit() {
+  var submit_boolean = true;
+  var bit_chars_left = $('#bit_chars_left').text();
+  var byte_chars_left = $('#byte_chars_left').text();
+  
+  var bit_number = parseInt(bit_chars_left);
+  var byte_number = parseInt(byte_chars_left);
+  if (bit_number < 0) {
+    submit_boolean = false;
+    alert("Bit is too long");
+  }
+  if (byte_number < 0) {
+    submit_boolean = false;
+    alert("Byte is too long");
+  }
+  
+//   if (submit_boolean == true) {
+//     document.forms[0].submit();return false;
+//   }
+
+}
+</script>
+
+
 <p>Need help? Check out our <a href='/guide'>guide</a>.</p>
 
 <h2><%=@term.term%></h2>
@@ -24,15 +50,21 @@
     </div>
     
     <div class="row">
-	    <div class="12u">
+	    <div class="2u">
+		    <p id="bit_chars_left">140</p>
+	    </div>
+	    <div class="10u">
 		    <label for="bit">Bit</label>
-		    <textarea name="bit" placeholder="Bit"><%=@term.bit%></textarea>
+		    <textarea name="bit" id="bit" placeholder="Bit"><%=@term.bit%></textarea>
 	    </div>
     </div>
     <div class="row">
-	    <div class="12u">
+	    <div class="2u">
+		    <p id="byte_chars_left">1120</p>
+	    </div>
+	    <div class="10u">
 		    <label for="byte">Byte</label>
-		    <textarea name="byte" placeholder="Byte"><%=@term.byte%></textarea>
+		    <textarea name="byte" id="byte" placeholder="Byte"><%=@term.byte%></textarea>
 	    </div>
     </div>
     <div class="row">
@@ -45,8 +77,7 @@
     
     <div class="row">
 	    <div class="12u">
-		    <!--<a href="#" onclick="document.forms[0].submit();return false;" class="button button-icon icon icon-envelope">Add This Term To Aphorme</a>-->
-		    <button class="submit">Submit</button>
+	    	<a href="#" onclick="checkAndSubmit()" class="button button-icon icon icon-file">Submit</a>
 	    </div>
     </div>
 </form>
@@ -55,4 +86,18 @@
 $(document).ready(function () {
     $("#related_terms").tokenInput("/term_autocomplete_api");
 });
+</script>
+
+<script>
+$('#bit')
+    .keyup(function(event) {
+        $('#bit_chars_left').html('' + (140 - $('#bit').val().length));
+    });
+    
+$('#byte')
+    .keyup(function(event) {
+        $('#byte_chars_left').html('' + (1120 - $('#byte').val().length));
+    });
+    
+    
 </script>
