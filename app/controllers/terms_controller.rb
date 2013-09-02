@@ -108,7 +108,7 @@ class TermsController < ApplicationController
   end
 
   def search
-    search_term = params[:search_term]
+    search_term = params[:search_term].downcase
     search_string = "%#{search_term}%"
     @terms = Term.where("name like ?", search_string)
 
