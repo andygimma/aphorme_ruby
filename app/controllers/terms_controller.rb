@@ -13,7 +13,7 @@ class TermsController < ApplicationController
   def create
     # check if this term already exists
     if session[:user_id]
-      term = params[:term]
+      term = params[:term].downcase
       origin = params[:origin]
       related_terms = params[:related_terms]
       
@@ -106,7 +106,9 @@ class TermsController < ApplicationController
 
   def search
     search_term = params[:search_term]
-    @terms = Term.where(term: search_term)
+    search_string = "%#{search_term}%"
+    @terms = Term.where("name like ?", search_string)
+
   end
   
   def search_term
