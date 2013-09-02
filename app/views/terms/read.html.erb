@@ -2,15 +2,21 @@
 
 <a href="/versions/<%=@term.id%>">See Previous Versions</a>
 
-<p><%= @term.term %></p>
-<p>Related Terms</p>
+<h2><%= @term.term %></h2>
+<p><strong>Related Terms</strong></p>
     <% @term.related_terms.each do |term| -%>
       <a href="/terms/<%=term.related_term_id%>"> <%= term.name %></a>
     <% end -%>
+    <% if @term.related_terms.blank? -%>
+    <p>No related terms entered</p>
+    <% end -%>
+<p><strong>Origin</strong></p>
 <p><%= @term.origin %></p>
+<p><strong>Bit</strong></p>
 <p><%= @term.bit %></p>
+<p><strong>Byte:</strong></p>
 <p><%= @term.byte %></p>
+<p><strong>Batch:</strong></p>
 <p><%= @term.batch %></p>
-<p><%= @term.version_number %></p>
 
 

@@ -101,7 +101,7 @@ class TermsController < ApplicationController
   end
 
   def index
-    @terms = Term.all()
+    @terms = Term.order("name")
   end
 
   def search
