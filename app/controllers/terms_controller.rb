@@ -47,6 +47,9 @@ class TermsController < ApplicationController
   def read
     term_id = params[:term_id]
     @term = Term.find(term_id)
+    ip_address = request.remote_ip
+    @search_info = @term.search_infos.build(ip_address: ip_address, user_id: session[:user_id], name: @term.name)
+    @search_info.save
   end
 
   def new_version
