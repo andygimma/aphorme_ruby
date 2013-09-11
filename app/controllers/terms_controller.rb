@@ -104,7 +104,7 @@ class TermsController < ApplicationController
   end
 
   def index
-    @terms = Term.order("name")
+    @terms = Term.order("name").paginate(:page => params[:page], :per_page => 20)
   end
 
   def search
