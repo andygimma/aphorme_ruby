@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :email, :name, :preferred_mail, :twitter, :password, :password_digest, :provider
   #
   
-  attr_accessible :email, :name, :preferred_mail, :twitter, :password, :password_digest
+  attr_accessible :email, :name, :preferred_mail, :twitter, :password, :password_digest, :city, :state, :country
 #   has_secure_password
   has_many :terms
   

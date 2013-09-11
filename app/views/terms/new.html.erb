@@ -76,7 +76,9 @@ function checkAndSubmit() {
 
 <script type="text/javascript">
 $(document).ready(function () {
-    $("#related_terms").tokenInput("/term_autocomplete_api");
+    $("#related_terms").tokenInput("/term_autocomplete_api", {
+    searchingText: "Searching..."
+    });
 });
 </script>
 

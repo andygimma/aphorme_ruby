@@ -155,7 +155,8 @@ class TermsController < ApplicationController
   end
   
   def term_autocomplete_api
-    @terms = Term.select("name, id")
+    query_string = params[:q]
+    @terms = Term.select("name, id").where("name like ?", "%#{query_string}%")
     render json: @terms
   end
 end
