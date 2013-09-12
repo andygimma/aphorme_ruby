@@ -142,7 +142,7 @@ class TermsController < ApplicationController
   end
   
   def term_map_api
-    @term_infos = TermInfo.all()
+    @term_infos = TermInfo.where('latitude is NOT NULL')
     render json: @term_infos
   end
   
@@ -150,7 +150,7 @@ class TermsController < ApplicationController
   end
   
   def search_map_api
-    @search_infos = SearchInfo.all()
+    @search_infos = SearchInfo.where('latitude is NOT NULL')
     render json: @search_infos
   end
   
