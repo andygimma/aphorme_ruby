@@ -6,5 +6,9 @@ class Term < ActiveRecord::Base
   has_many :term_infos
   has_many :search_infos
   has_many :related_terms
+  
+  validates :name, uniqueness: true
+  validates :term, uniqueness: true
+
 
 end
