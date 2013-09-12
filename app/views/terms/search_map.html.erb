@@ -31,10 +31,10 @@ var osm = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 12, attribution: osmAttr
 map.setView(new L.LatLng(22.0, 0.0),2);
 map.addLayer(osm);
 var markers = L.markerClusterGroup();
-$.getJSON('organization_map_api', function(data) {  
+$.getJSON('search_map_api', function(data) {  
   for (var i = 0; i < data.length; i++) {
     if (typeof null != data[i].latitude && typeof null != data[i].longitude) {
-      var marker = L.marker([data[i].latitude, data[i].longitude]).bindPopup('<a href="/organization/'+data[i].id+'">'+data[i].name+'</a>');
+      var marker = L.marker([data[i].latitude, data[i].longitude]).bindPopup('<a href="/term/'+data[i].id+'">'+data[i].name+'</a>');
     }
     markers.addLayer(marker);
   }
