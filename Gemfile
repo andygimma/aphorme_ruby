@@ -12,7 +12,7 @@ gem 'paper_trail'
 gem 'rails', '3.2.13'
 gem 'omniauth'
 gem 'omniauth-password'
-gem 'geocoder'
+gem 'geocoder', :git => 'https://github.com/alexreisner/geocoder.git'
 gem 'will_paginate', '~> 3.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
