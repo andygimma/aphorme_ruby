@@ -25,7 +25,7 @@ class TermsController < ApplicationController
       byte = params[:byte]
       batch = params[:batch]
       version_number = Digest::SHA1.hexdigest Time.new.to_s
-      @user = User.find(session[:user_id])
+      @user = User.find_by_uid(session[:user_id])
       @term = @user.terms.build(name: term, term: term, origin: origin, bit: bit, byte: byte, batch: batch, previous_version_number: nil, version_number: version_number)
       @term.save
       
