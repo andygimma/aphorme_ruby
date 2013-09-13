@@ -14,6 +14,10 @@ class SessionsController < ApplicationController
 
   def create
     #awaiting omniauth
+    user = User.from_omniauth(env["omniauth.auth"])
+    session[:user_id] = user.uid
+#     redirect_to root_url, notice: "Signed in!"
+    redirect_to "/"
   end
 
   def destroy
@@ -22,6 +26,7 @@ class SessionsController < ApplicationController
   end
 
   def failure
+    redirect_to '/signin'
 #     redirect_to new_session_path, notice: "Authentication failed"
   end
 

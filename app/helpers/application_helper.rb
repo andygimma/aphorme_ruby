@@ -8,7 +8,7 @@ module ApplicationHelper
 											
 										</ul>
 									</li>'
-    if session[:user_email].nil?
+    if session[:user_id].nil?
       nav = '<li><a class="icon icon-retweet" href="/signin"><span>Sign in</span></a></li>'
     end
     nav

@@ -1,26 +1,25 @@
 <h1>Sign in</h1>
 <a href="/signup" class="button button-icon icon icon-file">Signup</a>
 
-<form id="signin_form" method="post" action="/user/signin">
-										
-																	<span id="email_error"></span>
+</br>
+</br>
+</br>
 
-<div class="row">
-	<div class="12u">
-		<input id="email" name="email" placeholder="Email" type="text" class="text" />
-	</div>
-</div>
-<div class="row">
-	<div class="12u">
-		<input name="password" placeholder="Password" type="text" class="text" />
-	</div>
-</div>
+        <p><a href="/auth/twitter"><img src="https://dev.twitter.com/sites/default/files/images_documentation/sign-in-with-twitter-gray.png" alt="Sign in with Twitter" /></a></p>
+        <p><a href="/auth/facebook"><img src='../assets/fb_login.png' alt="Sign in with Facebook" /></a></p>
 
+<strong>Don't use these services?</strong>
+  <%= link_to "Create an account", '/signup' %> or login below.
+</p>
 
-
-<div class="row">
-	<button class="submit">Submit</button>
-
-</div>
-
-</form>
+<%= form_tag "/auth/identity/callback" do %>
+  <div class="field">
+    <%= label_tag :auth_key, "Email" %><br>
+    <%= text_field_tag :auth_key %>
+  </div>
+  <div class="field">
+    <%= label_tag :password %><br>
+    <%= password_field_tag :password %>
+  </div>
+  <div class="actions"><%= submit_tag "Login" %></div>
+<% end %>

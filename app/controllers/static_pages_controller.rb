@@ -21,5 +21,6 @@ class StaticPagesController < ApplicationController
   end
 
   def signup
+    @identity = env['omniauth.identity']
   end
 end
