@@ -1,5 +1,6 @@
 <h2>Terms in Alphabetical Order</h2>
 <%= will_paginate @terms %>
+<br/>
 <% @terms.each do |term| -%>
   <p><a href="<%=term.id%>"> <%= term.term %></a></p>
 <% end -%>
