@@ -12,6 +12,15 @@ class StaticPagesController < ApplicationController
   end
 
   def contact
+    @term_infos = TermInfo.all()
+    @term_infos.each do |term|
+      term_id = term.id
+      if not Term.exists?(term_id)
+        puts "Term Id Is Gone #{term_id}"
+      end
+
+    end
+
     # search all of terms map
     # for each in terms map, search term by term_id
     # if not @term.exists?
