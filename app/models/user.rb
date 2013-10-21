@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 #   has_secure_password
   has_many :terms
   
-  validates :email, :uniqueness => true
+#   validates :email, :uniqueness => true
 
   def self.from_omniauth(auth)
     find_by_provider_and_uid(auth["provider"], auth["uid"]) || create_with_omniauth(auth)
