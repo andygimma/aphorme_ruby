@@ -12,6 +12,10 @@ class StaticPagesController < ApplicationController
   end
 
   def contact
+    # search all of terms map
+    # for each in terms map, search term by term_id
+    # if not @term.exists?
+    # log above term
   end
 
   def guide
