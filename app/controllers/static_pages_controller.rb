@@ -17,7 +17,7 @@ class StaticPagesController < ApplicationController
       term_id = term.id
       if not Term.exists?(term_id)
         puts "Term Id Is Gone #{term_id}"
-        #SearchInfo.destroy(term.id)
+        SearchInfo.destroy(term.id)
       end
 
     end
